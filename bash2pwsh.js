@@ -113,6 +113,10 @@ function convert(bash) {
   // C:/Program Files
   bash = bash.replace(/(?:\s|^)\/([cdefghijk])\//im, "$1:/");
 
+  // line terminations
+  // \ >>> `
+  bash = bash.replace(/\\\s*\n/g, "`\n");
+
   // $args >& $outfile
   // >>>
   // $args Out-File -FilePath $outFile
